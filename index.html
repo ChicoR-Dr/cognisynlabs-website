@@ -1,34 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cognisyn Labs</title>
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Garamond, san-serif;
+      background-color: #faf9f5;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background-color: #3E2723; /* Dark brown background */
+      color: white; /* White text */
+      border-bottom: 1px solid #ccc;
+    }
+
+    .top-bar .logo img {
+      height: 50px;
+    }
+
+    .top-bar .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 16px;
+    }
+
+    .top-bar .nav-links a {
+      text-decoration: none;
+      color: white; /* White links for contrast */
+      font-weight: 500;
+    }
+
+    .top-bar .nav-links a:hover {
+      color: #f1c40f; /* Optional: Highlight links on hover */
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 90vh;
+      background: url('your-background-image.jpg') center/cover no-repeat;
+      background-color: #faf9f5; /* fallback color */
+      text-align: center;
+      position: relative;
+      color: #333;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(250, 249, 245, 0.7); /* light overlay */
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-content .hero-logo img {
+      height: 350px;
+      margin-bottom: 20px;
+    }
+
+    .hero h5 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin: 20px 0;
+      color: #111;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .buttons a {
+      padding: 12px 25px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .btn-primary {
+      background-color: #00AEEF;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background-color: #0090cc;
+    }
+
+    .btn-secondary {
+      background-color: #00C853;
+      color: #fff;
+    }
+
+    .btn-secondary:hover {
+      background-color: #009b3a;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #3E2723; /* Dark brown background */
+      color: white; /* White text */
+      padding: 20px 0;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .footer p {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+  </style>
 </head>
 <body>
-  <header>
-    <img src="/logos/logo_1.png" alt="Cognisyn Labs Logo" class="logo" />
-    <p class="tagline">AI Services & Product Innovation</p>
-  </header>
 
-  <section class="about">
-    <h2>About Us</h2>
-    <p>We specialize in AI-powered solutions for healthcare, research, and enterprise, bridging ideas to impact through deep learning, computer vision, and innovation at scale.</p>
+  <div class="top-bar">
+    <div class="logo">
+      <img src="logo_1.png" alt="Logo">
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="products.html">Products</a>
+      <a href="teams.html">Team</a>
+      <a href="contact_us.html">Contact Us</a>
+    </div>
+  </div>
+
+  
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-logo">
+        <img src="logo_1.png" alt="Cognisyn Labs Logo">
+      </div>
+      <h5>Cognition • Synapsis • Research • Real-World Solutions</h5>
+      <h1>Where Insight Meets Innovation,<br>and Research Powers Reality.</h1>
+      <p>Translating Scientific Discovery into Intelligent, Scalable Solutions.</p>
+      <div class="buttons">
+        <a href="#" class="btn-secondary">Explore Services</a>
+        <a href="#" class="btn-primary">Contact Us</a>
+      </div>
+    </div>
   </section>
-
-  <section class="services">
-    <h2>Our Services</h2>
-    <ul>
-      <li>Custom AI Product Development</li>
-      <li>Medical Imaging AI Solutions</li>
-      <li>Generative AI Integration</li>
-      <li>Consulting & Research Partnerships</li>
-    </ul>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Cognisyn Labs LLC | contact@cognisynlabs.com</p>
+  <footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2025 Cognisyn Labs. All rights reserved.</p>
+    </div>
   </footer>
+
 </body>
 </html>

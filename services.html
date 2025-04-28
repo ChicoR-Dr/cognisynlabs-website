@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services - Cognisyn Labs</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Garamond, san-serif;
+      background-color:   
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background-color: #3E2723; /* Dark brown background */
+      color: white; /* White text */
+      border-bottom: 1px solid #ccc;
+    }
+
+    .top-bar .logo img {
+      height: 50px;
+    }
+
+    .top-bar .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 16px;
+    }
+
+    .top-bar .nav-links a {
+      text-decoration: none;
+      color: white; /* White links for contrast */
+      font-weight: 500;
+    }
+
+    .top-bar .nav-links a:hover {
+      color: #f1c40f; /* Optional: Highlight links on hover */
+    }
+
+    /* Services Section */
+    
+
+    .container-fluid.services {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh; /* Full height of the viewport */
+      padding: 50px 0;
+      background-color: #faf9f5; /* Set background color of the services section to #faf9f5 */
+    }
+
+    .text-center {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .text-primary {
+      font-size: 6rem; /* Adjust the font size as needed */
+    }
+
+    .text-center h5, .text-center h1 {
+      margin-bottom: 20px; /* Add some space between headings */
+    }
+
+    .text-center::after {
+      content: '';
+      display: block;
+      width: 50%;
+      height: 2px;
+      background-color: #00AEEF; /* Add a blue line after the text */
+      margin: 20px auto; /* Center the line */
+    }
+
+
+
+    .services-inner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .services-item {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .services-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .services-content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .services-content-icon {
+      margin-bottom: 20px;
+    }
+
+    .services-content-icon i {
+      color: #00AEEF;
+    }
+
+    .services-content h4 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .services-content p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .btn-secondary {
+      padding: 10px 20px;
+      background-color: #00C853;
+      color: #fff;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background-color: #009b3a;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #3E2723; /* Dark brown background */
+      color: white; /* White text */
+      padding: 20px 0;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .footer p {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <div class="top-bar">
+    <div class="logo">
+      <img src="logo_1.png" alt="Logo">
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="products.html">Products</a>
+      <a href="teams.html">Team</a>
+      <a href="contact_us.html">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Services Start -->
+  <div class="container-fluid services py-5">
+    <div class="container text-center pb-5">
+      <h5 class="text-primary">Our Services</h5>
+      <h1>Services Built Specifically For Your Business</h1>
+    </div>
+
+    
+    <div class="services-inner container">
+      <!-- Service Item 1 -->
+      <div class="services-item">
+        <div class="services-content">
+          <div class="services-content-icon">
+            <i class="fa fa-code fa-7x mb-4 text-primary"></i>
+          </div>
+          <h4>Web Design</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+          <a href="#" class="btn-secondary">Read More</a>
+        </div>
+      </div>
+
+      <!-- Service Item 2 -->
+      <div class="services-item">
+        <div class="services-content">
+          <div class="services-content-icon">
+            <i class="fa fa-file-code fa-7x mb-4 text-primary"></i>
+          </div>
+          <h4>Web Development</h4>
+          <p>Nullam eget felis ac nunc lobortis vehicula sit amet ut risus. Curabitur eu augue auctor.</p>
+          <a href="#" class="btn-secondary">Read More</a>
+        </div>
+      </div>
+
+      <!-- Service Item 3 -->
+      <div class="services-item">
+        <div class="services-content">
+          <div class="services-content-icon">
+            <i class="fa fa-paint-brush fa-7x mb-4 text-primary"></i>
+          </div>
+          <h4>UI/UX Design</h4>
+          <p>Curabitur vehicula urna sit amet magna gravida, sit amet bibendum magna viverra.</p>
+          <a href="#" class="btn-secondary">Read More</a>
+        </div>
+      </div>
+
+      <!-- Service Item 4 -->
+      <div class="services-item">
+        <div class="services-content">
+          <div class="services-content-icon">
+            <i class="fa fa-database fa-7x mb-4 text-primary"></i>
+          </div>
+          <h4>Database Management</h4>
+          <p>Integer ut felis a orci posuere tempor. Aenean fermentum ante ac nibh varius tempus.</p>
+          <a href="#" class="btn-secondary">Read More</a>
+        </div>
+      </div>
+
+      <!-- Service Item 5 -->
+      <div class="services-item">
+        <div class="services-content">
+          <div class="services-content-icon">
+            <i class="fa fa-cloud fa-7x mb-4 text-primary"></i>
+          </div>
+          <h4>Cloud Solutions</h4>
+          <p>Aliquam erat volutpat. In tempus neque in dui fermentum convallis. Cras eget nisl sit amet.</p>
+          <a href="#" class="btn-secondary">Read More</a>
+        </div>
+      </div>
+
+      <!-- Service Item 6 -->
+      <div class="services-item">
+        <div class="services-content">
+          <div class="services-content-icon">
+            <i class="fa fa-cogs fa-7x mb-4 text-primary"></i>
+          </div>
+          <h4>Automation Services</h4>
+          <p>Phasellus sollicitudin urna sit amet ligula fermentum. Vestibulum volutpat, ligula nec.</p>
+          <a href="#" class="btn-secondary">Read More</a>
+        </div>
+      </div>
+
+      <!-- Service Item 7 -->
+      <div class="services-item">
+        <div class="services-content">
+          <div class="services-content-icon">
+            <i class="fa fa-mobile-alt fa-7x mb-4 text-primary"></i>
+          </div>
+          <h4>Mobile App Development</h4>
+          <p>Quisque ac nibh et justo euismod hendrerit. Curabitur consequat erat sapien, et convallis.</p>
+          <a href="#" class="btn-secondary">Read More</a>
+        </div>
+      </div>
+
+      <!-- Service Item 8 -->
+      <div class="services-item">
+        <div class="services-content">
+          <div class="services-content-icon">
+            <i class="fa fa-shield-alt fa-7x mb-4 text-primary"></i>
+          </div>
+          <h4>Cybersecurity</h4>
+          <p>Mauris vel convallis orci, a rutrum nisi. Nunc maximus sit amet libero ac feugiat.</p>
+          <a href="#" class="btn-secondary">Read More</a>
+        </div>
+      </div>
+
+      <!-- Service Item 9 -->
+      <div class="services-item">
+        <div class="services-content">
+          <div class="services-content-icon">
+            <i class="fa fa-chart-line fa-7x mb-4 text-primary"></i>
+          </div>
+          <h4>Data Analytics</h4>
+          <p>Fusce efficitur, sapien in pretium gravida, sapien orci facilisis purus, ac pretium.</p>
+          <a href="#" class="btn-secondary">Read More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Services End -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2025 Cognisyn Labs. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
