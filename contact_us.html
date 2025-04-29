@@ -5,92 +5,94 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact Us - Work in Progress</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Garamond, san-serif;
-      background-color: #faf9f5;
-    }
+      body {
+          margin: 0;
+          font-family: Garamond, sans-serif;
+          background-color: #faf9f5;
+        }
 
-    .top-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0px 20px;
-      background-color: #3E2723; /* Dark brown background */
-      color: white;
-      border-bottom: 1px solid #ccc;
-    }
+        .top-bar {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0px 20px;
+          background-color: #3E2723;
+          color: white;
+          border-bottom: 1px solid #ccc;
+        }
 
-    .logo img {
-      height: 90px;
-    }
+        .top-bar .logo img {
+          height: 70px;
+        }
 
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      font-size: 22px;
-    }
+        .top-bar .nav-links {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 15px;
+          font-size: 18px;
+        }
 
-    .nav-links a {
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-    }
+        .top-bar .nav-links a {
+          text-decoration: none;
+          color: white;
+          font-weight: 500;
+        }
 
-    .nav-links a:hover {
-      color: #f1c40f;
-    }
+        .top-bar .nav-links a:hover {
+          color: #f1c40f;
+        }
 
-    .work-in-progress {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 90vh;
-      font-size: 2rem;
-      color: #555;
-      text-align: center;
-    }
-    /* Footer */
-    .footer {
-      background-color: #3E2723; /* Dark brown background */
-      color: white; /* White text */
-      padding: 20px 0;
-      position: relative;
-      text-align: center; /* Center the text */
-      bottom: 0;
-      width: 100%;
-    }
-
-    .footer p {
-      margin: 0;
-      font-size: 1rem;
-      font-weight: 400;
-    }
-    @media (max-width: 768px) {
-      .top-bar {
-        flex-direction: column;
-        align-items: flex-start;
+      .work-in-progress {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+        font-size: 2rem;
+        color: #555;
+        text-align: center;
       }
-
-      .logo img {
-        height: 60px;
-        margin-bottom: 10px;
-      }
-
-      .nav-links {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        font-size: 18px;
+      /* Footer */
+      .footer {
+        background-color: #3E2723; /* Dark brown background */
+        color: white; /* White text */
+        padding: 20px 0;
+        position: relative;
+        text-align: center; /* Center the text */
+        bottom: 0;
         width: 100%;
       }
 
-      .work-in-progress {
-        font-size: 1.4rem;
-        padding: 40px 15px;
-        text-align: center;
+      .footer p {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 400;
       }
-    }
+      @media (max-width: 768px) {
+        .top-bar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .logo img {
+          height: 60px;
+          margin-bottom: 10px;
+        }
+
+        .nav-links {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+          font-size: 18px;
+          width: 100%;
+        }
+
+        .work-in-progress {
+          font-size: 1.4rem;
+          padding: 40px 15px;
+          text-align: center;
+        }
+      }
   </style>
 </head>
 <body>
