@@ -2,201 +2,290 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cognisyn Labs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cognisyn Labs — AI Research & Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
   <style>
-      body {
-        margin: 0;
-        font-family: Garamond, sans-serif;
-        background-color: #faf9f5;
-      }
+    /* ── Hero ── */
+    .hero {
+      min-height: calc(100vh - 72px);
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-left {
+      padding: 80px 64px 80px 80px;
+      position: relative;
+      z-index: 1;
+      background-image: url('img/brain.png');
+      background-size: 70%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .hero-left::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(250, 249, 245, 0.95);
+      z-index: 0;
+    }
+    .hero-left > * { position: relative; z-index: 1; }
+    .hero-logo { margin-bottom: 40px; }
+    .hero-logo img { height: 80px; }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(40px, 4.5vw, 64px);
+      font-weight: 300;
+      color: var(--brown-dark);
+      line-height: 1.12;
+      margin-bottom: 24px;
+    }
+    .hero h1 em { font-style: italic; color: var(--brown); }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-mid);
+      line-height: 1.7;
+      font-weight: 300;
+      max-width: 440px;
+      margin-bottom: 40px;
+    }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-right {
+      background: var(--brown);
+      min-height: calc(100vh - 72px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      bottom: -100px; right: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 65%);
+    }
+    .hero-right-content { position: relative; z-index: 1; text-align: center; }
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.5;
+      margin-bottom: 48px;
+    }
+    .hero-tagline strong { color: var(--gold-light); font-style: normal; font-weight: 400; }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(201,168,76,0.2);
+      border: 1px solid rgba(201,168,76,0.2);
+      width: 100%;
+    }
+    .stat {
+      background: rgba(62,39,35,0.5);
+      padding: 24px 16px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--gold-light);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
 
-      .top-bar {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0px 20px;
-        background-color: #3E2723;
-        color: white;
-        border-bottom: 1px solid #ccc;
-      }
+    /* ── Services preview ── */
+    .services-preview {
+      padding: 100px 0;
+      background: var(--cream-2);
+      border-top: 1px solid var(--border);
+    }
+    .services-preview .container { text-align: center; }
+    .services-preview h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 300;
+      color: var(--brown-dark);
+      margin-bottom: 12px;
+    }
+    .services-preview > .container > p {
+      font-size: 16px;
+      color: var(--text-mid);
+      font-weight: 300;
+      margin-bottom: 60px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--border);
+    }
+    .service-tile {
+      background: white;
+      padding: 40px 32px;
+      text-align: left;
+      transition: background 0.2s;
+      cursor: default;
+    }
+    .service-tile:hover { background: var(--cream); }
+    .tile-icon {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .tile-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--brown-dark);
+      margin-bottom: 12px;
+    }
+    .tile-desc {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.65;
+      font-weight: 300;
+    }
 
-      .top-bar .logo img {
-        height: 70px;
-      }
+    /* ── ClearChart callout ── */
+    .product-callout {
+      background: var(--brown);
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-callout::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.12) 0%, transparent 60%);
+    }
+    .callout-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+    }
+    .callout-left .badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      background: rgba(201,168,76,0.2);
+      border: 1px solid rgba(201,168,76,0.35);
+      color: var(--gold-light);
+      padding: 4px 12px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .callout-left h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: 300;
+      color: white;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .callout-left h2 em { font-style: italic; color: var(--gold-light); }
+    .callout-left p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .callout-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: rgba(201,168,76,0.15);
+    }
+    .callout-feature {
+      background: rgba(62,39,35,0.6);
+      padding: 24px 20px;
+    }
+    .cf-icon { font-size: 20px; margin-bottom: 10px; }
+    .cf-title {
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 6px;
+      letter-spacing: 0.3px;
+    }
+    .cf-desc {
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.5;
+    }
 
-      .top-bar .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
-        font-size: 18px;
-      }
+    /* ── Mission strip ── */
+    .mission {
+      padding: 80px 0;
+      text-align: center;
+    }
+    .mission h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--brown-dark);
+      max-width: 700px;
+      margin: 0 auto 32px;
+      line-height: 1.4;
+    }
+    .mission h2 strong { font-style: normal; color: var(--brown); font-weight: 500; }
 
-      .top-bar .nav-links a {
-        text-decoration: none;
-        color: white;
-        font-weight: 500;
-      }
-
-      .top-bar .nav-links a:hover {
-        color: #f1c40f;
-      }
-
-      .hero {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 80vh;
-        background: url('/img/brain.png') center/80% no-repeat;
-        background-color: #faf9f5;
-        text-align: center;
-        position: relative;
-        color: #333;
-        padding: 40px 20px;
-      }
-
-      .hero::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: rgba(250, 249, 245, 0.85);
-      }
-
-      .hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: 700px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .hero-content .hero-logo img {
-        max-width: 80%;
-        height: auto;
-        margin-bottom: 20px;
-      }
-
-      .hero h5 {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-        color: #555;
-      }
-
-      .hero h1 {
-        font-size: 2.2rem;
-        margin: 20px 0;
-        color: #111;
-      }
-
-      .hero p {
-        font-size: 1rem;
-        margin-bottom: 30px;
-        color: #555;
-      }
-
-      .buttons {
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      .buttons a {
-        padding: 12px 25px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: background-color 0.3s;
-        font-size: 1rem;
-      }
-
-      .btn-primary {
-        background-color: #00AEEF;
-        color: #fff;
-      }
-
-      .btn-primary:hover {
-        background-color: #0090cc;
-      }
-
-      .btn-secondary {
-        background-color: #00C853;
-        color: #fff;
-      }
-
-      .btn-secondary:hover {
-        background-color: #009b3a;
-      }
-
-      .footer {
-        background-color: #3E2723;
-        color: white;
-        padding: 20px 0;
-        text-align: center;
-      }
-
-      .footer p {
-        margin: 0;
-        font-size: 1rem;
-        font-weight: 400;
-      }
-
-      /* RESPONSIVE STYLES */
-      @media (max-width: 768px) {
-        .top-bar {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .top-bar .logo img {
-          height: 60px;
-          margin-bottom: 10px;
-        }
-
-        .top-bar .nav-links {
-          flex-direction: column;
-          gap: 10px;
-          font-size: 16px;
-          width: 100%;
-        }
-
-        .hero h1 {
-          font-size: 1.8rem;
-        }
-
-        .hero h5 {
-          font-size: 1rem;
-        }
-
-        .hero p {
-          font-size: 0.95rem;
-        }
-
-        .buttons a {
-          padding: 10px 20px;
-          font-size: 0.95rem;
-        }
-
-        .hero {
-          background-size: 100% auto;
-          padding: 60px 20px;
-        }
-      }
-    </style>
-
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { min-height: 400px; }
+      .hero-left { padding: 60px 20px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .callout-inner { grid-template-columns: 1fr; gap: 40px; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
 </head>
 <body>
 
   <div class="top-bar">
-    <div class="logo">
-      <img src="logo_2.png" alt="Logo">
-    </div>
+    <div class="logo"><img src="img/logo.png" alt="Cognisyn Labs"></div>
     <div class="nav-links">
-      <a href="index.html">Home</a>
+      <a href="index.html" class="active">Home</a>
       <a href="services.html">Services</a>
       <a href="products.html">Products</a>
       <a href="teams.html">About Us</a>
@@ -204,28 +293,132 @@
     </div>
   </div>
 
-  
-
   <section class="hero">
-    <div class="hero-content">
-      <div class="hero-logo">
-        <img src="logo_2.png" alt="Cognisyn Labs Logo">
+    <div class="hero-left">
+      <div class="hero-logo"><img src="img/logo.png" alt="Cognisyn Labs"></div>
+      <div class="hero-eyebrow">Cognition · Synapsis · Research · Solutions</div>
+      <h1>Where Insight Meets<br><em>Innovation</em></h1>
+      <p class="hero-sub">Translating scientific discovery into intelligent, scalable solutions that power real-world outcomes.</p>
+      <div class="hero-buttons">
+        <a href="services.html" class="btn-gold">Explore Services</a>
+        <a href="contact_us.html" class="btn-outline">Contact Us</a>
       </div>
-      <h5>Cognition • Synapsis • Research • Real-World Solutions</h5>
-      <h1>Where Insight Meets Innovation,<br>and Research Powers Reality.</h1>
-      <p>Translating Scientific Discovery into Intelligent, Scalable Solutions.</p>
-      <div class="buttons">
-        <a href="services.html" class="btn-secondary">Explore Services</a>
-        <a href="contact_us.html" class="btn-primary">Contact Us</a>
+    </div>
+    <div class="hero-right">
+      <div class="hero-right-content">
+        <p class="hero-tagline">Research that <strong>thinks</strong>,<br>solutions that <strong>scale</strong>,<br>intelligence that <strong>matters</strong>.</p>
+        <div class="stats-row">
+          <div class="stat">
+            <div class="stat-num">6</div>
+            <div class="stat-label">Services</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">AI</div>
+            <div class="stat-label">Native Stack</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">∞</div>
+            <div class="stat-label">Scale</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <section class="services-preview">
+    <div class="container">
+      <div class="section-label">What We Do</div>
+      <h2>Built for Modern AI Challenges</h2>
+      <div class="gold-line"></div>
+      <p>From generative models to clinical intelligence — our services span the full spectrum of applied AI.</p>
+      <div class="services-grid">
+        <div class="service-tile">
+          <div class="tile-icon">🧠</div>
+          <div class="tile-title">Generative AI</div>
+          <div class="tile-desc">Custom development of generative models for text, images, and structured data generation.</div>
+        </div>
+        <div class="service-tile">
+          <div class="tile-icon">👁</div>
+          <div class="tile-title">Computer Vision</div>
+          <div class="tile-desc">Image analysis, OCR, object detection, and visual intelligence for healthcare and industry.</div>
+        </div>
+        <div class="service-tile">
+          <div class="tile-icon">📊</div>
+          <div class="tile-title">Data Analytics</div>
+          <div class="tile-desc">Extracting actionable insights through statistical analysis, ML, and advanced visualisation.</div>
+        </div>
+        <div class="service-tile">
+          <div class="tile-icon">🎯</div>
+          <div class="tile-title">AI Strategy</div>
+          <div class="tile-desc">Guidance on integrating AI into business processes with clear implementation roadmaps.</div>
+        </div>
+        <div class="service-tile">
+          <div class="tile-icon">⚙️</div>
+          <div class="tile-title">Custom Model Dev</div>
+          <div class="tile-desc">Designing and training AI models tailored to specific industry needs and use cases.</div>
+        </div>
+        <div class="service-tile">
+          <div class="tile-icon">☁️</div>
+          <div class="tile-title">MLOps</div>
+          <div class="tile-desc">CI/CD for machine learning — deployment, monitoring, and performance optimisation.</div>
+        </div>
+      </div>
+      <div style="margin-top:48px">
+        <a href="services.html" class="btn-primary">View All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="product-callout">
+    <div class="container callout-inner">
+      <div class="callout-left">
+        <div class="badge">Featured Product</div>
+        <h2>Meet <em>ClearChart</em></h2>
+        <p>PHI redaction and structured extraction for scanned medical documents. Processes referral letters, prior authorizations, and clinical notes in under 2 minutes — entirely on your infrastructure.</p>
+        <a href="products.html" class="btn-gold">Learn More →</a>
+      </div>
+      <div class="callout-right">
+        <div class="callout-feature">
+          <div class="cf-icon">🔒</div>
+          <div class="cf-title">HIPAA-ready</div>
+          <div class="cf-desc">Local processing, no cloud upload</div>
+        </div>
+        <div class="callout-feature">
+          <div class="cf-icon">🧠</div>
+          <div class="cf-title">Structured Extraction</div>
+          <div class="cf-desc">Patient, provider, clinical data</div>
+        </div>
+        <div class="callout-feature">
+          <div class="cf-icon">🎯</div>
+          <div class="cf-title">Word-level Redaction</div>
+          <div class="cf-desc">Pixel-accurate PHI removal</div>
+        </div>
+        <div class="callout-feature">
+          <div class="cf-icon">⚡</div>
+          <div class="cf-title">Under 2 Minutes</div>
+          <div class="cf-desc">Full pipeline, any document type</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mission">
+    <div class="container">
+      <div class="section-label">Our Mission</div>
+      <h2>"To be at the forefront of AI innovation — creating intelligent systems that <strong>solve today's problems</strong> and anticipate tomorrow's challenges."</h2>
+      <a href="teams.html" class="btn-outline">Meet the Team</a>
+    </div>
+  </section>
+
   <footer class="footer">
-    <div class="container text-center">
-      <p>&copy; 2025 Cognisyn Labs. All rights reserved.</p>
+    <p>&copy; 2025 Cognisyn Labs. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="services.html">Services</a>
+      <a href="products.html">Products</a>
+      <a href="teams.html">About</a>
+      <a href="contact_us.html">Contact</a>
     </div>
   </footer>
-
 
 </body>
 </html>

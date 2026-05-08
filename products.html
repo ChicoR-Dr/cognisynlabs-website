@@ -3,122 +3,504 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Products - Work in Progress</title>
+  <title>Products — Cognisyn Labs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
   <style>
-      body {
-          margin: 0;
-          font-family: Garamond, sans-serif;
-          background-color: #faf9f5;
-        }
+    .products-section { max-width: 1080px; margin: 0 auto; padding: 80px 40px; }
 
-        .top-bar {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0px 20px;
-          background-color: #3E2723;
-          color: white;
-          border-bottom: 1px solid #ccc;
-        }
+    /* ── Product card ── */
+    .product-card {
+      background: white;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 64px;
+    }
+    .card-header {
+      background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown) 60%, var(--brown-mid) 100%);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .product-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: rgba(201,168,76,0.2);
+      border: 1px solid rgba(201,168,76,0.35);
+      color: var(--gold-light);
+      padding: 4px 12px;
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+    .card-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      font-weight: 300;
+      color: white;
+      margin-bottom: 6px;
+    }
+    .card-header .tagline {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+    }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(26,122,114,0.25);
+      border: 1px solid rgba(36,169,158,0.4);
+      color: #24a99e;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 16px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .status-pill::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: #24a99e;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
 
-        .top-bar .logo img {
-          height: 70px;
-        }
+    .card-body { padding: 48px; }
 
-        .top-bar .nav-links {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 15px;
-          font-size: 18px;
-        }
+    /* Outcome stats */
+    .outcome-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+    .outcome-item {
+      background: var(--cream);
+      padding: 20px 16px;
+      text-align: center;
+    }
+    .outcome-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--brown);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .outcome-label {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
 
-        .top-bar .nav-links a {
-          text-decoration: none;
-          color: white;
-          font-weight: 500;
-        }
+    .card-description {
+      font-size: 16px;
+      color: var(--text-mid);
+      line-height: 1.8;
+      font-weight: 300;
+      max-width: 700px;
+      margin-bottom: 48px;
+    }
 
-        .top-bar .nav-links a:hover {
-          color: #f1c40f;
-        }
+    /* ── Video section ── */
+    .video-section {
+      margin-bottom: 48px;
+    }
+    .video-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      background: var(--brown-dark);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
 
-      .work-in-progress {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 90vh;
-        font-size: 2rem;
-        color: #555;
-        text-align: center;
-      }
-      /* Footer */
-      .footer {
-        background-color: #3E2723; /* Dark brown background */
-        color: white; /* White text */
-        padding: 20px 0;
-        position: relative;
-        text-align: center; /* Center the text */
-        bottom: 0;
-        width: 100%;
-      }
+    /* YouTube / Vimeo embed */
+    .video-iframe-wrap {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+    }
+    .video-iframe-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
 
-      .footer p {
-        margin: 0;
-        font-size: 1rem;
-        font-weight: 400;
-      }
-      /* Responsive for mobile devices */
-      @media (max-width: 768px) {
-        .top-bar {
-          flex-direction: column;
-          align-items: flex-start;
-        }
+    /* Local MP4 */
+    .video-local {
+      width: 100%;
+      display: block;
+      max-height: 480px;
+      object-fit: cover;
+    }
 
-        .logo img {
-          height: 60px;
-          margin-bottom: 10px;
-        }
+    /* Placeholder shown when no video is set */
+    .video-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 40px;
+      text-align: center;
+      border: 2px dashed rgba(201,168,76,0.25);
+      background: rgba(62,39,35,0.03);
+    }
+    .video-placeholder .play-icon {
+      width: 64px; height: 64px;
+      background: rgba(62,39,35,0.08);
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: var(--brown);
+    }
+    .video-placeholder p {
+      font-size: 14px;
+      color: var(--text-light);
+      font-weight: 300;
+    }
+    .video-placeholder strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text-mid);
+      margin-bottom: 6px;
+    }
 
-        .nav-links {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 10px;
-          font-size: 18px;
-          width: 100%;
-        }
+    /* Features */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+    .feature {
+      background: white;
+      padding: 28px 24px;
+    }
+    .feature-icon { font-size: 22px; margin-bottom: 12px; }
+    .feature-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .feature-desc {
+      font-size: 12px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
 
-        .work-in-progress {
-          font-size: 1.4rem;
-          padding: 40px 15px;
-          text-align: center;
-        }
-      }
+    /* Document types */
+    .doc-types {
+      margin-bottom: 40px;
+    }
+    .doc-types-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 14px;
+    }
+    .doc-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .doc-tag {
+      font-size: 12px;
+      color: var(--text-mid);
+      background: var(--cream-2);
+      border: 1px solid var(--border);
+      padding: 5px 14px;
+    }
+
+    /* CTA */
+    .card-cta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .compliance-note {
+      margin-left: auto;
+      font-size: 11px;
+      color: var(--text-light);
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Coming soon */
+    .coming-soon-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    .coming-soon-card {
+      border: 1px solid var(--border);
+      padding: 32px;
+      background: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .coming-soon-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .cs-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+    .coming-soon-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .coming-soon-card p {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    @media (max-width: 768px) {
+      .products-section { padding: 40px 20px; }
+      .card-header { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
+      .card-body { padding: 28px 24px; }
+      .outcome-row { grid-template-columns: repeat(2, 1fr); }
+      .features-grid { grid-template-columns: 1fr; }
+      .coming-soon-grid { grid-template-columns: 1fr; }
+      .card-cta { flex-direction: column; align-items: flex-start; }
+      .compliance-note { margin-left: 0; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
   <div class="top-bar">
-    <div class="logo">
-      <img src="logo_2.png" alt="Logo">
-    </div>
+    <div class="logo"><img src="img/logo.png" alt="Cognisyn Labs"></div>
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
-      <a href="products.html">Products</a>
+      <a href="products.html" class="active">Products</a>
       <a href="teams.html">About Us</a>
       <a href="contact_us.html">Contact Us</a>
     </div>
   </div>
 
-  <!-- Work In Progress Content -->
-  <div class="work-in-progress">
-    Work in Progress
+  <div class="page-hero">
+    <div class="eyebrow">Cognisyn Labs · Products</div>
+    <h1>Intelligence built for<br><em>healthcare workflows</em></h1>
+    <p>Purpose-built tools that extract, structure, and protect sensitive medical data — on your infrastructure.</p>
   </div>
+
+  <div class="products-section">
+
+    <!-- ClearChart -->
+    <div class="product-card">
+      <div class="card-header">
+        <div>
+          <div class="product-badge">Document Intelligence</div>
+          <h2>ClearChart</h2>
+          <div class="tagline">PHI Redaction &amp; Structured Extraction Platform</div>
+        </div>
+        <div class="status-pill">Available Now</div>
+      </div>
+
+      <div class="card-body">
+
+        <!-- Outcome stats -->
+        <div class="outcome-row">
+          <div class="outcome-item">
+            <div class="outcome-num">&lt;2<span style="font-size:18px">min</span></div>
+            <div class="outcome-label">Per Document</div>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-num">40<span style="font-size:18px">+</span></div>
+            <div class="outcome-label">Structured Fields</div>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-num">6</div>
+            <div class="outcome-label">Document Types</div>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-num">100<span style="font-size:18px">%</span></div>
+            <div class="outcome-label">Local Processing</div>
+          </div>
+        </div>
+
+        <p class="card-description">
+          ClearChart transforms scanned medical documents into structured data and
+          HIPAA-compliant redacted PDFs. Upload any medical document and receive
+          fully extracted patient, provider, insurance, and clinical data —
+          alongside a clean redacted copy with all PHI removed. Everything runs
+          entirely on your own infrastructure. No data ever leaves your system.
+        </p>
+
+        <!-- Video section -->
+        <div class="video-section">
+          <div class="video-label">See it in action</div>
+          <div class="video-wrapper">
+
+            <!--
+              OPTION A — YouTube embed (recommended for GitHub Pages):
+              Replace VIDEO_ID with your YouTube video ID
+              e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ → ID is dQw4w9WgXcQ
+              Uncomment the block below and remove the placeholder div.
+
+            <div class="video-iframe-wrap">
+              <iframe
+                src="https://www.youtube.com/embed/VIDEO_ID?rel=0&modestbranding=1"
+                title="ClearChart Demo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+            -->
+
+            <!--
+              OPTION B — Vimeo embed:
+              Replace VIDEO_ID with your Vimeo video ID
+              Uncomment the block below.
+
+            <div class="video-iframe-wrap">
+              <iframe
+                src="https://player.vimeo.com/video/VIDEO_ID?title=0&byline=0&portrait=0"
+                title="ClearChart Demo"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+            -->
+
+            <video class="video-local" controls poster="demo-poster.jpg">
+              <source src="demo_video/demo.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+
+            
+
+          </div>
+        </div>
+
+        <!-- What it handles -->
+        <div class="doc-types">
+          <div class="doc-types-label">Supported Document Types</div>
+          <div class="doc-tags">
+            <span class="doc-tag">Referral Letters</span>
+            <span class="doc-tag">Prior Authorisations</span>
+            <span class="doc-tag">Clinical Notes</span>
+            <span class="doc-tag">EOB / Insurance Documents</span>
+            <span class="doc-tag">Lab Reports</span>
+            <span class="doc-tag">Discharge Summaries</span>
+          </div>
+        </div>
+
+        <!-- Features -->
+        <div class="features-grid">
+          <div class="feature">
+            <div class="feature-icon">📄</div>
+            <div class="feature-title">Handles Any Scan Quality</div>
+            <div class="feature-desc">Works on skewed, low-resolution, or photocopied documents. Automatic correction applied before processing.</div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🧠</div>
+            <div class="feature-title">Deep Structured Extraction</div>
+            <div class="feature-desc">Extracts 40+ fields — patient demographics, provider identifiers, insurance details, ICD-10 codes, medications, and vitals.</div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🔒</div>
+            <div class="feature-title">Precise PHI Redaction</div>
+            <div class="feature-desc">Only PHI is removed. Surrounding clinical context is preserved. Every redacted region is logged with page and position.</div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🏥</div>
+            <div class="feature-title">Runs on Your Infrastructure</div>
+            <div class="feature-desc">No API calls, no cloud uploads. All processing happens on your own hardware. HIPAA-compliant by design.</div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">📊</div>
+            <div class="feature-title">Audit-ready Output</div>
+            <div class="feature-desc">Every run produces a structured JSON export, a PHI redaction report, and a side-by-side document preview.</div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">⚡</div>
+            <div class="feature-title">Fast &amp; Repeatable</div>
+            <div class="feature-desc">Full pipeline completes in under 2 minutes. Models load once and remain cached for back-to-back processing.</div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="card-cta">
+          <a href="contact_us.html" class="btn-primary">Request a Demo</a>
+          <a href="contact_us.html" style="font-size:13px;color:var(--teal);text-decoration:none;border-bottom:1px solid var(--teal);padding-bottom:2px">Contact us for access</a>
+          <div class="compliance-note">🔒 Local processing &nbsp;·&nbsp; No cloud upload &nbsp;·&nbsp; HIPAA-ready</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coming Soon -->
+    <div class="section-label" style="margin-bottom:20px">Coming Soon</div>
+    <div class="coming-soon-grid">
+      <div class="coming-soon-card">
+        <div class="cs-tag">In Development</div>
+        <h3>ClearChart Batch</h3>
+        <p>Process entire document queues overnight. Automated pipeline for high-volume prior auth processing, coding audits, and compliance reviews across hundreds of documents.</p>
+      </div>
+      <div class="coming-soon-card">
+        <div class="cs-tag">Research</div>
+        <h3>ClearChart API</h3>
+        <p>REST API for integrating structured extraction and PHI redaction directly into your EHR workflows, billing systems, or compliance dashboards.</p>
+      </div>
+    </div>
+
+  </div>
+
   <footer class="footer">
-    <div class="container text-center">
-      <p>&copy; 2025 Cognisyn Labs. All rights reserved.</p>
+    <p>&copy; 2025 Cognisyn Labs. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="contact_us.html">Contact</a>
     </div>
   </footer>
 

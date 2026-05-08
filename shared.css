@@ -1,0 +1,235 @@
+/* ═══════════════════════════════════════════════════════
+   Cognisyn Labs — Shared Design System
+   Brown #3E2723 · Cream #faf9f5 · Gold #c9a84c
+   ═══════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  --brown:       #3E2723;
+  --brown-dark:  #2c1810;
+  --brown-mid:   #5D3A2A;
+  --brown-light: #7a4f3e;
+  --cream:       #faf9f5;
+  --cream-2:     #f3f0e8;
+  --cream-3:     #ede9dd;
+  --gold:        #c9a84c;
+  --gold-light:  #e8c96a;
+  --gold-dim:    rgba(201,168,76,0.15);
+  --teal:        #1a7a72;
+  --teal-light:  #24a99e;
+  --text:        #2a1f1a;
+  --text-mid:    #6b4f3a;
+  --text-light:  #9e7e6a;
+  --border:      rgba(62,39,35,0.12);
+  --shadow-sm:   0 2px 12px rgba(62,39,35,0.08);
+  --shadow-md:   0 4px 30px rgba(62,39,35,0.12);
+  --shadow-lg:   0 8px 50px rgba(62,39,35,0.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── Navbar ─────────────────────────────────────────── */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  background: var(--brown);
+  border-bottom: 2px solid var(--gold);
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  height: 72px;
+}
+.top-bar .logo img { height: 56px; display: block; }
+.top-bar .nav-links {
+  display: flex;
+  gap: 36px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.top-bar .nav-links a {
+  text-decoration: none;
+  color: rgba(255,255,255,0.75);
+  font-weight: 400;
+  transition: color 0.2s;
+  position: relative;
+  padding-bottom: 2px;
+}
+.top-bar .nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 1px;
+  background: var(--gold-light);
+  transform: scaleX(0);
+  transition: transform 0.2s;
+}
+.top-bar .nav-links a:hover,
+.top-bar .nav-links a.active { color: var(--gold-light); }
+.top-bar .nav-links a:hover::after,
+.top-bar .nav-links a.active::after { transform: scaleX(1); }
+
+/* ── Page hero band ─────────────────────────────────── */
+.page-hero {
+  background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown) 55%, var(--brown-mid) 100%);
+  padding: 64px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% -10%, rgba(201,168,76,0.18) 0%, transparent 65%);
+}
+.page-hero .eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  position: relative;
+}
+.page-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 300;
+  color: white;
+  line-height: 1.15;
+  position: relative;
+}
+.page-hero h1 em { font-style: italic; color: var(--gold-light); }
+.page-hero p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.6);
+  max-width: 520px;
+  margin: 16px auto 0;
+  font-weight: 300;
+  position: relative;
+}
+
+/* ── Footer ─────────────────────────────────────────── */
+.footer {
+  background: var(--brown-dark);
+  border-top: 2px solid var(--gold);
+  padding: 28px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer p { font-size: 13px; color: rgba(255,255,255,0.5); }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold-light); }
+
+/* ── Utility ─────────────────────────────────────────── */
+.container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 12px;
+}
+.gold-line {
+  width: 48px;
+  height: 2px;
+  background: var(--gold);
+  margin: 0 auto 32px;
+}
+
+/* ── Buttons ─────────────────────────────────────────── */
+.btn-primary {
+  display: inline-block;
+  background: var(--brown);
+  color: white;
+  padding: 13px 32px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--brown-mid); transform: translateY(-1px); }
+
+.btn-gold {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--brown-dark);
+  padding: 13px 32px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: var(--brown);
+  padding: 12px 30px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1.5px solid var(--brown);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-outline:hover { background: var(--brown); color: white; }
+
+/* ── Card base ────────────────────────────────────────── */
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .top-bar { padding: 0 20px; height: 64px; }
+  .top-bar .nav-links { gap: 16px; font-size: 10px; }
+  .page-hero { padding: 48px 20px; }
+  .container { padding: 0 20px; }
+  .footer { padding: 24px 20px; flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
