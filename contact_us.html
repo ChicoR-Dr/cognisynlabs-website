@@ -60,7 +60,7 @@
       font-weight: 400;
     }
 
-    /* Form */
+    /* Form card */
     .contact-form {
       background: white;
       border: 1px solid var(--border);
@@ -105,6 +105,7 @@
       color: var(--text);
       outline: none;
       transition: border-color 0.2s;
+      -webkit-appearance: none;
     }
     .form-group input:focus,
     .form-group select:focus,
@@ -113,11 +114,41 @@
       background: white;
     }
     .form-group textarea { resize: vertical; min-height: 120px; }
-    .form-submit { margin-top: 8px; }
     .form-note {
       font-size: 11px;
       color: var(--text-light);
       margin-top: 12px;
+      line-height: 1.5;
+    }
+
+    /* Success message */
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 48px 20px;
+    }
+    .success-icon {
+      width: 64px; height: 64px;
+      background: rgba(62,39,35,0.06);
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin: 0 auto 20px;
+    }
+    .success-msg h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--brown-dark);
+      margin-bottom: 10px;
+    }
+    .success-msg p {
+      font-size: 14px;
+      color: var(--text-mid);
+      font-weight: 300;
     }
 
     @media (max-width: 768px) {
@@ -128,8 +159,9 @@
   </style>
 </head>
 <body>
+
   <div class="top-bar">
-    <div class="logo"><img src="logo_2.png" alt="Cognisyn Labs"></div>
+    <div class="logo"><img src="img/logo.png" alt="Cognisyn Labs"></div>
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
@@ -148,6 +180,8 @@
   <section class="contact-section">
     <div class="container">
       <div class="contact-grid">
+
+        <!-- Left: contact info -->
         <div class="contact-left">
           <div class="section-label">Reach Us</div>
           <h2>We'd Love to<br><em>Hear From You</em></h2>
@@ -170,42 +204,46 @@
             <div class="contact-item">
               <div class="contact-item-icon">🔒</div>
               <div>
-                <div class="contact-item-label">Email</div>
-                <div class="contact-item-value">chinmayatcognisynlabs@gmail.com</div>
+                <div class="contact-item-label">Product Demo</div>
+                <div class="contact-item-value">Request a ClearChart demo</div>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- Right: form -->
         <div class="contact-form">
           <div class="form-title">Send Us a Message</div>
-          <!--
-            Formspree setup:
-            1. Go to https://formspree.io and sign up free
-            2. Create a new form with email: chinmayatcognisynlabs@gmail.com
-            3. Replace YOUR_FORM_ID below with your Formspree form ID
-               e.g. if your endpoint is https://formspree.io/f/xyzabcde
-               then YOUR_FORM_ID = xyzabcde
-          -->
-          <form action="https://formspree.io/f/mqenyeno" method="POST">
 
-            <!-- Redirect back to your site after submission -->
-            <input type="hidden" name="_next" value="https://chicoR-Dr.github.io/cognisynlabs-website/contact_us.html?sent=true">
-            <!-- Subject line in your inbox -->
-            <input type="hidden" name="_subject" value="New enquiry from Cognisyn Labs website">
+          <!-- Success message (hidden until form submits) -->
+          <div class="success-msg" id="success-msg">
+            <div class="success-icon">✓</div>
+            <h3>Message Sent</h3>
+            <p>Thank you for reaching out.<br>We'll be in touch within one business day.</p>
+          </div>
+
+          <!-- Formspree form -->
+          <form id="contact-form"
+                action="https://formspree.io/f/mjglagdj"
+                method="POST">
+
+            <!-- Hidden fields -->
+            <input type="hidden" name="_subject" value="New enquiry — Cognisyn Labs website">
+            <!-- Honeypot spam filter -->
+            <input type="text" name="_gotcha" style="display:none">
 
             <div class="form-row">
               <div class="form-group">
-                <label for="first_name">First Name</label>
+                <label for="first_name">First Name *</label>
                 <input type="text" id="first_name" name="first_name" placeholder="John" required>
               </div>
               <div class="form-group">
-                <label for="last_name">Last Name</label>
+                <label for="last_name">Last Name *</label>
                 <input type="text" id="last_name" name="last_name" placeholder="Smith" required>
               </div>
             </div>
             <div class="form-group">
-              <label for="email">Email Address</label>
+              <label for="email">Email Address *</label>
               <input type="email" id="email" name="email" placeholder="john@company.com" required>
             </div>
             <div class="form-group">
@@ -227,22 +265,25 @@
               </select>
             </div>
             <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" placeholder="Tell us about your project or challenge…" required></textarea>
+              <label for="message">Message *</label>
+              <textarea id="message" name="message"
+                        placeholder="Tell us about your project or challenge…"
+                        required></textarea>
             </div>
-            <div class="form-submit">
-              <button type="submit" class="btn-primary" style="width:100%;text-align:center;padding:15px">Send Message</button>
+            <div class="form-group" style="margin-bottom:0">
+              <button type="submit"
+                      class="btn-primary"
+                      style="width:100%;text-align:center;padding:15px;font-size:13px;">
+                Send Message
+              </button>
             </div>
-            <p class="form-note">We typically respond within 1 business day. Your information is kept strictly confidential.</p>
+            <p class="form-note">
+              * Required fields. We typically respond within 1 business day.<br>
+              Your information is kept strictly confidential.
+            </p>
           </form>
-
-          <!-- Success message shown after submission -->
-          <div id="success-msg" style="display:none;text-align:center;padding:40px 20px;">
-            <div style="font-size:32px;margin-bottom:16px">✓</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--brown-dark);margin-bottom:8px">Message Sent</div>
-            <div style="font-size:13px;color:var(--text-light)">Thank you for reaching out. We'll be in touch within one business day.</div>
-          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -256,14 +297,42 @@
       <a href="teams.html">About</a>
     </div>
   </footer>
+
   <script>
-    // Show success message if redirected back after form submission
-    if (window.location.search.includes('sent=true')) {
-      const form = document.querySelector('form');
-      const msg  = document.getElementById('success-msg');
-      if (form) form.style.display = 'none';
-      if (msg)  msg.style.display  = 'block';
-    }
+    // Handle form submission via fetch (AJAX) so page doesn't reload
+    const form = document.getElementById('contact-form');
+    const successMsg = document.getElementById('success-msg');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          // Hide form, show success
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+        } else {
+          btn.textContent = 'Send Message';
+          btn.disabled = false;
+          alert('Something went wrong. Please try again or email us directly.');
+        }
+      } catch (err) {
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+        alert('Network error. Please check your connection and try again.');
+      }
+    });
   </script>
+
 </body>
 </html>
