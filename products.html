@@ -111,7 +111,71 @@
       margin-bottom: 48px;
     }
 
-    /* ── Video section ── */
+    /* Hardware strip */
+    .hw-strip {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0;
+      margin-bottom: 48px;
+      border: 1px solid var(--border);
+      background: var(--border);
+    }
+    .hw-card {
+      background: white;
+      padding: 32px 28px;
+    }
+    .hw-icon { font-size: 28px; margin-bottom: 14px; }
+    .hw-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--brown-dark);
+      margin-bottom: 10px;
+    }
+    .hw-desc {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+    .hw-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      display: inline-block;
+    }
+    .hw-tag-gold {
+      color: var(--brown);
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.08);
+    }
+    .hw-divider {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      background: var(--cream-2);
+      gap: 10px;
+    }
+    .hw-divider-line {
+      width: 1px;
+      flex: 1;
+      background: var(--border);
+    }
+    .hw-divider-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      font-style: italic;
+      color: var(--text-light);
+    }
+
+    /* Video section */
     .video-section {
       margin-bottom: 48px;
     }
@@ -317,7 +381,7 @@
 <body>
 
   <div class="top-bar">
-    <div class="logo"><img src="img/logo.png" alt="Cognisyn Labs"></div>
+    <div class="logo"><img src="logo_2.png" alt="Cognisyn Labs"></div>
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
@@ -351,10 +415,6 @@
         <!-- Outcome stats -->
         <div class="outcome-row">
           <div class="outcome-item">
-            <div class="outcome-num">&lt;2<span style="font-size:18px">min</span></div>
-            <div class="outcome-label">Per Document</div>
-          </div>
-          <div class="outcome-item">
             <div class="outcome-num">40<span style="font-size:18px">+</span></div>
             <div class="outcome-label">Structured Fields</div>
           </div>
@@ -366,6 +426,10 @@
             <div class="outcome-num">100<span style="font-size:18px">%</span></div>
             <div class="outcome-label">Local Processing</div>
           </div>
+          <div class="outcome-item">
+            <div class="outcome-num">CPU<span style="font-size:18px"> + </span>GPU</div>
+            <div class="outcome-label">Hardware Flexible</div>
+          </div>
         </div>
 
         <p class="card-description">
@@ -375,6 +439,27 @@
           alongside a clean redacted copy with all PHI removed. Everything runs
           entirely on your own infrastructure. No data ever leaves your system.
         </p>
+
+        <!-- CPU / GPU processing -->
+        <div class="hw-strip">
+          <div class="hw-card hw-cpu">
+            <div class="hw-icon">🖥️</div>
+            <div class="hw-title">CPU Compatible</div>
+            <div class="hw-desc">Runs on any standard server or workstation — no specialised hardware required. Ideal for low-volume processing, evaluation, or air-gapped environments where GPU infrastructure is unavailable.</div>
+            <div class="hw-tag">Standard deployment</div>
+          </div>
+          <div class="hw-divider">
+            <div class="hw-divider-line"></div>
+            <div class="hw-divider-label">or</div>
+            <div class="hw-divider-line"></div>
+          </div>
+          <div class="hw-card hw-gpu">
+            <div class="hw-icon">⚡</div>
+            <div class="hw-title">GPU Accelerated</div>
+            <div class="hw-desc">NVIDIA GPU support delivers significantly faster throughput — recommended for production workflows, high-volume document queues, and real-time processing requirements.</div>
+            <div class="hw-tag hw-tag-gold">Recommended for production</div>
+          </div>
+        </div>
 
         <!-- Video section -->
         <div class="video-section">
@@ -412,16 +497,29 @@
             </div>
             -->
 
-            
+            <!--
+              OPTION C — Local MP4 in repo (works on GitHub Pages if file < 50MB):
+              Place demo.mp4 in the same folder as this file.
+              Uncomment the block below.
+
+            <video class="video-local" controls poster="demo-poster.jpg">
+              <source src="demo.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            -->
+
+            <!-- Placeholder — remove this div once you add a video above -->
             <div class="video-iframe-wrap">
-              <iframe
-                src="https://www.youtube.com/embed/M3pYHzzPKdA?rel=0&modestbranding=1"
-                title="ClearChart Demo"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-              </iframe>
-            </div>
+            <iframe
+              src="https://www.youtube.com/embed/M3pYHzzPKdA?rel=0&modestbranding=1"
+              title="ClearChart Demo"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
           </div>
+
+          </div>
+        </div>
 
         <!-- What it handles -->
         <div class="doc-types">
